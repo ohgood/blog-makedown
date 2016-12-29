@@ -1,0 +1,15 @@
+---
+title: Mybatis中#和$用法区别
+date: 2016-12-25 23:43:43
+tags: ["Mybatis"]
+categories: ["Mybatis"]
+---
+![img](http://7xpm82.com1.z0.glb.clouddn.com/img/%E6%91%98%E8%A6%81%E5%9B%BE%E7%89%87/Mybatis.png)
+<!-- more -->
+如果你写代码的时候，花了很长时间时间找不到bug问题出在哪里，可以考虑一下是不是#和$没理解。
+
+一般能用#别用$：因为#式能够很大程度防止sql注入，$无法防止Sql注入，为什么会存在防止sql注入与否的差异呢？
+#传入数据都字符串自传入数据加双引号：order by #{id},传入值1,解析sql值order by "1", 传入值id则解析sqlorder by "id".
+$传入数据直接显示sql：order by ${id}传入值id则解析sqlorder by id.
+所以：$式般用于传入数据库象例传入表名;一般能用#别用$.
+
